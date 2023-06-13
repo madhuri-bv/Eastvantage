@@ -16,7 +16,7 @@ result = df_final.groupby(["customer_id","item_name", "age"])["quantity"].sum().
 # print(result.head(5))
 # print(type(result))
 
-result.to_csv('Output/result.csv', sep =';')
+result.to_csv('output.csv', sep =';')
 
 
 
