@@ -1,0 +1,6 @@
+select DISTINCT a.customer_id as customer, a.age as age, a.item_name as item, SUM(a.quantity) as quantity from (
+select a.customer_id, a.age, a.item_name, a.quantity as quantity from (
+select a.*, b.order_id, b.item_id, b.item_name,  b.quantity from
+(select s.*, c.age from sales s left join customers c on s.customer_id = c.customer_id) a left join
+(select o.*, i.item_name from orders o left join items i on o.item_id = i.item_id) b on a.sales_id = b.sales_id) a where age>= 18 and age<=35) a
+group by customer_id, age, item
